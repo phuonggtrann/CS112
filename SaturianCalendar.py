@@ -1,15 +1,17 @@
 def saturianDay():
-    return ["Ti","En","Hy","Ia","Mi","Rh", "Ph","Ja","Ca","Ki","At","Ym"]
+    return ["Titanday","Enceladusday","Hyperionday","Iapetusday","Mimasday","Rheaday", "Phoebeday","Janusday","Calypsoday","Kiviuqday","Atlasday","Ymirday"]
     
 def takeInput():
     ansList=["yes","no"]
-    startDay = (input("Enter start day: "))[0:2]
-    isFiesta = input("Is is month Fiesta? yes/no: ")
-    numDay = int(input("Enter number of day: "))
-    while startDay[0:3] not in saturianDay() or isFiesta not in ansList or numDay<36 or numDay>78:
-        startDay = input("Sorry pls try again: ")
-        isFiesta = input("Sorry pls try again: ")
-        numDay = input("Pls enter a number in range 36-78 ")
+    startDay = (input("Enter start day:"))
+    while startDay not in saturianDay(): 
+        startDay = input("Sorry pls another start day:")
+    isFiesta = input("Is is month Fiesta? yes/no:")
+    while isFiesta not in ansList:
+        isFiesta = input("Sorry pls indicate whether it's Fiesta month:")
+    numDay = int(input("Enter number of day:"))
+    while numDay<36 or numDay>78:
+        numDay = input("Pls enter a number in range 36-78")
     startDayIndex = saturianDay().index(startDay)
     makeCalendar(startDay,startDayIndex, numDay,isFiesta)
     
@@ -26,7 +28,7 @@ def makeCalendar(startDay,startDayIndex,numDay,isFiesta):
                 startDayIndex-=1
             else:
                 if (numDay+1)!=start:
-                    if isFiesta == "yes" and day[x] in fiestaDay and (weekCount==2 or weekCount==4):
+                    if isFiesta == "yes" and day[x][0:2] in fiestaDay and (weekCount==2 or weekCount==4):
                         Calendar+="--\t"
                     else:
                         if len(str(start))<2:
@@ -45,3 +47,5 @@ def makeCalendar(startDay,startDayIndex,numDay,isFiesta):
         takeInput()
     else:
         return None
+        
+takeInput()
