@@ -9,9 +9,17 @@ def takeInput():
     isFiesta = input("Is is month Fiesta? yes/no:")
     while isFiesta not in ansList:
         isFiesta = input("Sorry pls indicate whether it's Fiesta month:")
-    numDay = int(input("Enter number of day:"))
-    while numDay<36 or numDay>78:
-        numDay = input("Pls enter a number in range 36-78")
+    numDay = input("Please enter number of days: ")
+    while True:
+        try:
+            numDay = int(numDay)
+            while numDay<36 or numDay>78:
+                numDay = int(input("Pls enter a whole number in range 36 to 78"))
+            break
+            
+        except ValueError:
+            numDay = int(input("Oops! Please enter a whole number: "))
+
     startDayIndex = saturianDay().index(startDay)
     makeCalendar(startDay,startDayIndex, numDay,isFiesta)
     
