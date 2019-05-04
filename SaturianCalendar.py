@@ -1,6 +1,6 @@
 def saturianDay():
     return ["Titanday","Enceladusday","Hyperionday","Iapetusday","Mimasday","Rheaday", "Phoebeday","Janusday","Calypsoday","Kiviuqday","Atlasday","Ymirday"]
-    
+
 def takeInput():
     ansList=["yes","no"]
     startDay = (input("Enter start day:"))
@@ -23,7 +23,7 @@ def takeInput():
     startDayIndex = saturianDay().index(startDay)
     makeCalendar(startDayIndex, numDay,isFiesta)
     
-def makeCalendar(startDayIndex,numDay,isFiesta):
+def makeCalendar(startDayIndex,numDay,isFiesta): 
     Calendar = "Ti  "+"En  "+"Hy  "+"Ia  "+"Mi  "+"Rh  "+"Ph  "+"Ja  "+"Ca  "+"Ki  "+"At  "+"Ym  \n"
     day = saturianDay()
     fiestaDay=["En","Ia","Ca","At"]
