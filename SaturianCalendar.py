@@ -21,32 +21,30 @@ def takeInput():
             numDay = int(input("Oops! Please enter a whole number: "))
 
     startDayIndex = saturianDay().index(startDay)
-    makeCalendar(startDay,startDayIndex, numDay,isFiesta)
+    makeCalendar(startDayIndex, numDay,isFiesta)
     
-def makeCalendar(startDay,startDayIndex,numDay,isFiesta):
-    Calendar = "Ti\t"+"En\t"+"Hy\t"+"Ia\t"+"Mi\t"+"Rh\t"+"Ph\t"+"Ja\t"+"Ca\t"+"Ki\t"+"At\t"+"Ym\t\n"
+def makeCalendar(startDayIndex,numDay,isFiesta):
+    Calendar = "Ti  "+"En  "+"Hy  "+"Ia  "+"Mi  "+"Rh  "+"Ph  "+"Ja  "+"Ca  "+"Ki  "+"At  "+"Ym  \n"
     day = saturianDay()
     fiestaDay=["En","Ia","Ca","At"]
     weekCount=1
     start=1
     while start!=(numDay+1):
         for x in range(len(day)):
+            if numDay+1==start:
+                break
             if startDayIndex>0:
-                Calendar +="  \t"
+                Calendar +="    "
                 startDayIndex-=1
             else:
-                if (numDay+1)!=start:
-                    if isFiesta == "yes" and day[x][0:2] in fiestaDay and (weekCount==2 or weekCount==4):
-                        Calendar+="--\t"
-                    else:
-                        if len(str(start))<2:
-                            Calendar=Calendar+" "+str(start)+"\t"
-                        else:
-                            Calendar += str(start)+"\t"
-                    start+=1
-                if x==len(day)-1:
-                    weekCount+=1
-                    Calendar+="\n"
+                if isFiesta == "yes" and day[x][0:2] in fiestaDay and (weekCount==2 or weekCount==4):
+                    Calendar+="--  "
+                else:
+                    Calendar += "{:2}  ".format(start)
+                start+=1
+            if x==len(day)-1:
+                weekCount+=1
+                Calendar+="\n"
     print(Calendar)
     isContinue = input("Do you want to continue? yes/no")
     while isContinue!="yes" and isContinue!="no":
